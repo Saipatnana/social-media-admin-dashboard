@@ -7,6 +7,8 @@ import LoginPage from "./components/LoginPage";
 import { AuthProvider } from "./context/AuthContext";
 import Layout from "./components/Layout";
 import AppLayout from "./components/AppLayout";
+import {ToastContainer} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   return (
@@ -29,6 +31,7 @@ const App = () => {
           </Route>
         </Routes>
       </Router>
+      <ToastContainer />
     </AuthProvider>
   );
 };

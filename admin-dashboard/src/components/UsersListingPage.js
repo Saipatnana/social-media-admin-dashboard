@@ -1,13 +1,13 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { users as initialUsers } from '../data/dummyData';
-import KPIBox from './KPIBox';
-import Pagination from './Pagination';
-import { AuthContext } from '../context/AuthContext';
+import React, { useContext, useState, useEffect } from "react";
+import { users as initialUsers } from "../data/dummyData";
+import KPIBox from "./KPIBox";
+import Pagination from "./Pagination";
+import { AuthContext } from "../context/AuthContext";
 
 const UsersListingPage = () => {
   const { setUsersCount } = useContext(AuthContext);
   const [users, setUsers] = useState(initialUsers);
-  const [newUser, setNewUser] = useState({ username: '', name: '', email: '' });
+  const [newUser, setNewUser] = useState({ username: "", name: "", email: "" });
   const [currentPage, setCurrentPage] = useState(1);
   const usersPerPage = 8;
 
@@ -27,15 +27,15 @@ const UsersListingPage = () => {
   const handleAddUser = () => {
     const userId = users.length + 1; // Example: increment user ID
     setUsers([...users, { user_id: userId, ...newUser }]);
-    setNewUser({ username: '', name: '', email: '' }); // Reset form
+    setNewUser({ username: "", name: "", email: "" }); // Reset form
   };
 
   const handleBanUser = (userId) => {
-    setUsers(users.filter(user => user.user_id !== userId));
+    setUsers(users.filter((user) => user.user_id !== userId));
   };
 
   const handleEditUser = (userId) => {
-    const user = users.find(user => user.user_id === userId);
+    const user = users.find((user) => user.user_id === userId);
     if (user) {
       setNewUser(user); // Set the selected user in the form to edit
       handleBanUser(userId); // Remove user temporarily while editing
@@ -78,7 +78,7 @@ const UsersListingPage = () => {
           Add User
         </button>
       </div>
-      
+
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white border border-gray-200">
           <thead>
@@ -91,7 +91,7 @@ const UsersListingPage = () => {
             </tr>
           </thead>
           <tbody>
-            {currentUsers.map(user => (
+            {currentUsers.map((user) => (
               <tr key={user.user_id} className="hover:bg-gray-100">
                 <td className="p-2 border">{user.user_id}</td>
                 <td className="p-2 border">{user.username}</td>

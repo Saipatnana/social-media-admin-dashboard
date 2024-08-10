@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import {toast} from 'react-toastify'
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -17,6 +18,7 @@ const LoginPage = () => {
       setIsAuthenticated(true);
       localStorage.setItem("isLogin", true);
       navigate("/dash"); // Navigate to the dashboard
+      toast.success("Logged In")
     }
   };
 

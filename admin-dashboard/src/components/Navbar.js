@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import {toast} from 'react-toastify'
 
 const Navbar = () => {
   const location  = useLocation().pathname;
@@ -8,6 +9,7 @@ const Navbar = () => {
   const onLogout = () => {
     localStorage.clear()
     navgate('/')
+    toast.success("Logged Out")
   }
 
   return (

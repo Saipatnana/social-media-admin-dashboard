@@ -17,7 +17,7 @@ function Layout() {
       <div className="flex-grow p-4 max-w-full">
         <div className="md:hidden">
           <IconButton onClick={toggleDrawer(true)}>
-            <MenuIcon />
+            <MenuIcon/>
           </IconButton>
         </div>
         <Outlet />

@@ -5,10 +5,10 @@ const Dashboard = ({ totalUsers, totalPosts }) => {
   const { usersCount, postsCount,recentPostsCount } = useContext(AuthContext);
   
   return (
-    <div className="p-6 pl-2 w-full">
+    <div className="pl-2 w-full">
       <h1 className="text-2xl font-bold mb-6">Admin Dashboard</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="bg-blue-500 text-white p-4 rounded-lg shadow">
+        <div className="bg-blue-500 w-full text-white p-4 rounded-lg shadow">
           <h2 className="text-lg">Total Users</h2>
           <p className="text-3xl">{usersCount}</p>
         </div>

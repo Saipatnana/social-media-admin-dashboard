@@ -52,7 +52,7 @@ const UsersListingPage = () => {
   return (
     <div className="p-6 pl-3 w-[100%] md:w-full">
       <h2 className="text-2xl font-bold mb-4">Users Listing</h2>
-      <div className="flex flex-col md:flex-row">
+      <div className="flex flex-col md:flex-row mb-2">
         <KPIBox title="Total Users" value={totalUsers} />
         <KPIBox title="Active in Last 24 Hours" value={activeUsers} />
       </div>

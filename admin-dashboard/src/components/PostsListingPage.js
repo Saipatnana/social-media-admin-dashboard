@@ -41,7 +41,7 @@ const PostsListingPage = () => {
   };
 
   return (
-    <div className="p-6 w-full">
+    <div className="p-6 pl-2 max-w-full">
       <h2 className="text-2xl font-bold mb-4">Posts Listing</h2>
       <div className="flex space-x-4 mb-4">
         <KPIBox title="Total Posts" value={totalPosts} />
@@ -52,18 +52,18 @@ const PostsListingPage = () => {
           placeholder="Caption"
           value={newPost.caption}
           onChange={(e) => setNewPost({ ...newPost, caption: e.target.value })}
-          className="border rounded p-2 mr-2"
+          className="border rounded p-2 mr-2 mb-2"
         />
         <input
           type="text"
           placeholder="Media URL"
           value={newPost.media_url}
           onChange={(e) => setNewPost({ ...newPost, media_url: e.target.value })}
-          className="border rounded p-2 mr-2"
+          className="border rounded p-2 mr-2 mb-2"
         />
         <button
           onClick={handleAddPost}
-          className="bg-green-500 text-white py-1 px-3 rounded hover:bg-green-400"
+          className="bg-green-500 text-white py-1 px-3 rounded hover:bg-green-400 mt-2"
         >
           Add Post
         </button>

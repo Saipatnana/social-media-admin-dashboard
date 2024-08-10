@@ -3,6 +3,7 @@ import { users as initialUsers } from "../data/dummyData";
 import KPIBox from "./KPIBox";
 import Pagination from "./Pagination";
 import { AuthContext } from "../context/AuthContext";
+import { toast } from "react-toastify";
 
 const UsersListingPage = () => {
   const { setUsersCount } = useContext(AuthContext);
@@ -25,9 +26,15 @@ const UsersListingPage = () => {
   const activeUsers = 24; // Placeholder for users active in the last 24 hours
 
   const handleAddUser = () => {
-    const userId = users.length + 1; // Example: increment user ID
-    setUsers([...users, { user_id: userId, ...newUser }]);
-    setNewUser({ username: "", name: "", email: "" }); // Reset form
+    if (newUser.username !== "" && newUser.name !== "" && newUser.email !== "") {
+      const userId = users.length + 1; // Example: increment user ID
+      setUsers([...users, { user_id: userId, ...newUser }]);
+      setNewUser({ username: "", name: "", email: "" }); // Reset form
+      toast.success("New User Added");
+    }
+    else{
+      toast.error("Please fill in all fields");
+    }
   };
 
   const handleBanUser = (userId) => {
@@ -43,9 +50,9 @@ const UsersListingPage = () => {
   };
 
   return (
-    <div className="p-6 w-full">
+    <div className="p-6 pl-3 w-[100%] md:w-full">
       <h2 className="text-2xl font-bold mb-4">Users Listing</h2>
-      <div className="flex space-x-4 mb-4">
+      <div className="flex flex-col md:flex-row">
         <KPIBox title="Total Users" value={totalUsers} />
         <KPIBox title="Active in Last 24 Hours" value={activeUsers} />
       </div>
@@ -55,14 +62,14 @@ const UsersListingPage = () => {
           placeholder="Username"
           value={newUser.username}
           onChange={(e) => setNewUser({ ...newUser, username: e.target.value })}
-          className="border rounded p-2 mr-2"
+          className="border rounded p-2 mr-2 mb-2"
         />
         <input
           type="text"
           placeholder="Name"
           value={newUser.name}
           onChange={(e) => setNewUser({ ...newUser, name: e.target.value })}
-          className="border rounded p-2 mr-2"
+          className="border rounded p-2 mr-2 mb-2"
         />
         <input
           type="email"

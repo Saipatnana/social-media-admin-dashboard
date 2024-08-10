@@ -8,8 +8,7 @@ import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
-import { IconButton } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
+
 
 const Navbar = ({ open, toggleDrawer }) => {
   const location = useLocation().pathname;

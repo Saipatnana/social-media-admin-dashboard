@@ -31,14 +31,15 @@ const UsersListingPage = () => {
       setUsers([...users, { user_id: userId, ...newUser }]);
       setNewUser({ username: "", name: "", email: "" }); // Reset form
       toast.success("New User Added");
-    }
-    else{
+      setUsersCount(users.length + 1); // Update count after adding a new user
+    } else {
       toast.error("Please fill in all fields");
     }
   };
 
   const handleBanUser = (userId) => {
     setUsers(users.filter((user) => user.user_id !== userId));
+    setUsersCount(users.length - 1); // Update count after banning a user
   };
 
   const handleEditUser = (userId) => {
@@ -80,7 +81,7 @@ const UsersListingPage = () => {
         />
         <button
           onClick={handleAddUser}
-          className="bg-green-500 text-white py-1 px-3 rounded hover:bg-green-400"
+          className="bg-green-500 text-white py-1 px-3 mt-2 rounded hover:bg-green-400"
         >
           Add User
         </button>

@@ -1,9 +1,19 @@
-import React, { useContext } from 'react';
-import { AuthContext } from '../context/AuthContext';
+import React, { useContext, useEffect } from "react";
+import { AuthContext } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = ({ totalUsers, totalPosts }) => {
-  const { usersCount, postsCount,recentPostsCount } = useContext(AuthContext);
-  
+  const navgate = useNavigate();
+  const { usersCount, postsCount, recentPostsCount } = useContext(AuthContext);
+ 
+  useEffect(() => {
+    const isLogin = localStorage.getItem("isLogin");
+    if (!isLogin) {
+      navgate("/");
+      console.log("sai");
+    }
+  } );
+
   return (
     <div className="pl-2 w-full">
       <h1 className="text-2xl font-bold mb-6">Admin Dashboard</h1>

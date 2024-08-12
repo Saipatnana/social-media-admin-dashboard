@@ -3,11 +3,21 @@ import { posts as initialPosts } from '../data/dummyData';
 import KPIBox from './KPIBox';
 import Pagination from './Pagination';
 import { AuthContext } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const PostsListingPage = () => {
   const { setPostCount,setRecentPostsCount,recentPostsCount } = useContext(AuthContext);
+  const navgate = useNavigate()
   const [posts, setPosts] = useState(initialPosts);
   const [newPost, setNewPost] = useState({ caption: '', media_url: '' });
+
+  useEffect(() => {
+    const isLogin = localStorage.getItem("isLogin");
+    if (!isLogin) {
+      navgate("/");
+      console.log("sai");
+    }
+  } );
 
   useEffect(() => {
     setPostCount(posts.length);

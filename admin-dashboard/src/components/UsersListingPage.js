@@ -4,14 +4,24 @@ import KPIBox from "./KPIBox";
 import Pagination from "./Pagination";
 import { AuthContext } from "../context/AuthContext";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const UsersListingPage = () => {
   const { setUsersCount } = useContext(AuthContext);
+  const navgate = useNavigate()
   const [users, setUsers] = useState(initialUsers);
   const [newUser, setNewUser] = useState({ username: "", name: "", email: "" });
   const [currentPage, setCurrentPage] = useState(1);
   const usersPerPage = 8;
 
+  useEffect(() => {
+    const isLogin = localStorage.getItem("isLogin");
+    if (!isLogin) {
+      navgate("/");
+      console.log("sai");
+    }
+  } );
+  
   useEffect(() => {
     setUsersCount(users.length);
   }, [users, setUsersCount]);
